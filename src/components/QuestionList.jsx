@@ -18,10 +18,16 @@ var QuestionList = React.createClass({
   componentWillUnmount: function() {},
 
   render: function () {
+    var questions = this.props.questions;
+    if (!Array.isArray(questions)) {
+      throw new Error('this.props.questions is must array');
+    };
+    var questionComps = questions.map(function(elem) {
+      return (<QuestionItem key={elem.key} title={elem.title} des={elem.des} voteCount={elem.voteCount} />);
+    });
     return (
         <div className="QuestionList">
-          <p>Content for QuestionList</p>
-          <QuestionItem />
+            {questionComps}
         </div>
       );
   }

@@ -5,8 +5,6 @@ var QuestionApp = require('./QuestionApp.jsx');
 // CSS
 require('normalize.css');
 require('../styles/main.css');
-
-
 var LearnReactApp = React.createClass({
   render: function() {
     return (
