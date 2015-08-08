@@ -16,6 +16,7 @@ var LearnReactApp = React.createClass({
     );
   }
 });
+
 React.render(<LearnReactApp />, document.getElementById('content')); // jshint ignore:line
 
 module.exports = LearnReactApp;
