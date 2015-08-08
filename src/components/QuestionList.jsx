@@ -22,8 +22,8 @@ var QuestionList = React.createClass({
       throw new Error('this.props.questions is must array');
     };
     var questionComps = questions.map(function(elem) {
-      return (<QuestionItem key={elem.key} title={elem.title} des={elem.des} voteCount={elem.voteCount} />);
-    });
+      return <QuestionItem key={elem.key} title={elem.title} des={elem.des} questionKey={elem.key} voteCount={elem.voteCount} onVote={ this.props.onVote } />;
+    }.bind(this));
     return (
         <div className="QuestionList">
             {questionComps}

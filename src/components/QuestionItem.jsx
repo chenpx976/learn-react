@@ -10,6 +10,14 @@ var QuestionItem = React.createClass({
   getInitialState: function() {
     return {};
   },
+  voteUp: function () {
+    var newCount = parseInt(this.props.voteCount, 10) + 1;
+    this.props.onVote(this.props.questionKey, newCount);
+  },
+  voteDown: function () {
+    var newCount = parseInt(this.props.voteCount, 10) - 1;
+    this.props.onVote(this.props.questionKey, newCount);
+  },
   getDefaultProps: function() {},
   componentWillMount: function() {},
   componentDidMount: function() {},
@@ -19,12 +27,12 @@ var QuestionItem = React.createClass({
     return (
         <div className="QuestionItem" key={this.props.key}>
             <div className="media-left">
-              <button className="btn btn-default">
+              <button onClick={this.voteUp} className="btn btn-default">
                 <span className="glyphicon glyphicon-chevron-up"></span>
+                <span className="vote-count">{this.props.voteCount}</span>
 
               </button>
-              <span className="vote-count">{this.props.voteCount}</span>
-              <button className="btn btn-default">
+              <button onClick={this.voteDown} className="btn btn-default">
                 <span className="glyphicon glyphicon-chevron-down"></span>
               </button>
             </div>

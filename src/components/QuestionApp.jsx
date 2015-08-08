@@ -4,6 +4,7 @@ var React = require('react/addons');
 var ShowAddButton = require('./ShowAddButton.jsx');
 var QuestionList = require('./QuestionList.jsx');
 var QuestionForm = require('./QuestionForm.jsx');
+var _ = require('lodash');
 require('styles/QuestionApp.less');
 var QuestionApp = React.createClass({
   getInitialState: function() {
@@ -27,7 +28,8 @@ var QuestionApp = React.createClass({
     };
 
   },
-  onToggleForm: function () {
+  onToggleForm: function (e) {
+    e.preventDefault();
     this.setState({
       formDisplayed: !this.state.formDisplayed
     });
@@ -45,6 +47,17 @@ var QuestionApp = React.createClass({
       return b.voteCount - a.voteCount;
     });
     return questions;
+  },
+  onVote: function (key, newCount) {
+    var questions = _.uniq(this.state.questions);
+    var index = _.findIndex( questions, function(qst){
+      return qst.key === key;
+    } );
+    questions[index].voteCount = newCount;
+    questions = this.sortQuestion(questions);
+    this.setState({
+      questions: questions
+    });
   },
   getDefaultProps: function() {},
   componentWillMount: function() {},
@@ -64,7 +77,7 @@ var QuestionApp = React.createClass({
           <div className="main container">
             {this.state.formDisplayed}
             <QuestionForm onNewQuestion={this.onNewQuestion} onToggleForm={this.onToggleForm} formDisplayed={this.state.formDisplayed} />
-            <QuestionList questions={this.state.questions} />
+            <QuestionList onVote={this.onVote} questions={this.state.questions} />
           </div>
         </div>
       );

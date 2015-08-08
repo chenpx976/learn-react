@@ -17,6 +17,9 @@ var QuestionForm = React.createClass({
   componentWillUnmount: function() {},
   handleForm: function (e) {
     e.preventDefault();
+    if (!this.refs.title.getDOMNode().value || !this.refs.des.getDOMNode().value) {
+      return;
+    }
     var newQuestion = {
       title: this.refs.title.getDOMNode().value,
       des: this.refs.des.getDOMNode().value,
