@@ -5,7 +5,22 @@ var ShowAddButton = require('./ShowAddButton.jsx');
 var QuestionList = require('./QuestionList.jsx');
 var QuestionForm = require('./QuestionForm.jsx');
 require('styles/QuestionApp.less');
-
+var LikeButton = React.createClass({
+  getInitialState: function() {
+    return {liked: false};
+  },
+  handleClick: function() {
+    this.setState({liked: !this.state.liked});
+  },
+  render: function() {
+    var text = this.state.liked ? 'like' : 'haven\'t liked';
+    return (
+      <p onClick={this.handleClick}>
+        You {text} this. Click to toggle.
+      </p>
+    );
+  }
+});
 var QuestionApp = React.createClass({
   getInitialState: function() {
     var questions = [
@@ -23,9 +38,15 @@ var QuestionApp = React.createClass({
     }
     ];
     return {
-      questions: questions
+      questions: questions,
+      formDisplayed: true
     };
 
+  },
+  onToggleForm: function () {
+    this.setState({
+      formDisplayed: !this.state.formDisplayed
+    });
   },
   getDefaultProps: function() {},
   componentWillMount: function() {},
@@ -40,13 +61,15 @@ var QuestionApp = React.createClass({
           <div className="jumbotron text-center">
               <div className="container">
                 <h1>React问答</h1>
-                <ShowAddButton />
+                <ShowAddButton onToggleForm={this.onToggleForm} />
               </div>
           </div>
           <div className="main container">
-            <QuestionForm />
+            {this.state.formDisplayed}
+            <QuestionForm formDisplayed={this.state.formDisplayed} />
             <QuestionList questions={this.state.questions} />
           </div>
+          <LikeButton />
         </div>
       );
   }

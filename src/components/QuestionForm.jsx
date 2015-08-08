@@ -18,8 +18,11 @@ var QuestionForm = React.createClass({
   componentWillUnmount: function() {},
 
   render: function () {
+    var styleObj = {
+      display: this.props.formDisplayed ? 'block' : 'none'
+    };
     return (
-        <div className="QuestionForm">
+        <div className="QuestionForm" style={ styleObj }>
         <form name="addQuestion" className="clearfix">
           <div className="form-group">
             <label htmlFor="qtitle">问题</label>
