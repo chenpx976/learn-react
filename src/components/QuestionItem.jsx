@@ -13,18 +13,17 @@ var QuestionItem = React.createClass({
   getDefaultProps: function() {},
   componentWillMount: function() {},
   componentDidMount: function() {},
-  shouldComponentUpdate: function() {},
   componentDidUpdate: function() {},
   componentWillUnmount: function() {},
-
   render: function () {
     return (
         <div className="QuestionItem" key={this.props.key}>
             <div className="media-left">
               <button className="btn btn-default">
                 <span className="glyphicon glyphicon-chevron-up"></span>
-                <span className="vote-count">{this.props.voteCount}</span>
+
               </button>
+              <span className="vote-count">{this.props.voteCount}</span>
               <button className="btn btn-default">
                 <span className="glyphicon glyphicon-chevron-down"></span>
               </button>

@@ -5,22 +5,6 @@ var ShowAddButton = require('./ShowAddButton.jsx');
 var QuestionList = require('./QuestionList.jsx');
 var QuestionForm = require('./QuestionForm.jsx');
 require('styles/QuestionApp.less');
-var LikeButton = React.createClass({
-  getInitialState: function() {
-    return {liked: false};
-  },
-  handleClick: function() {
-    this.setState({liked: !this.state.liked});
-  },
-  render: function() {
-    var text = this.state.liked ? 'like' : 'haven\'t liked';
-    return (
-      <p onClick={this.handleClick}>
-        You {text} this. Click to toggle.
-      </p>
-    );
-  }
-});
 var QuestionApp = React.createClass({
   getInitialState: function() {
     var questions = [
@@ -39,7 +23,7 @@ var QuestionApp = React.createClass({
     ];
     return {
       questions: questions,
-      formDisplayed: true
+      formDisplayed: false
     };
 
   },
@@ -48,10 +32,23 @@ var QuestionApp = React.createClass({
       formDisplayed: !this.state.formDisplayed
     });
   },
+  onNewQuestion: function ( newQuestion ) {
+    newQuestion.key = this.state.questions.length + 1;
+    var newQuestions = this.state.questions.concat(newQuestion);
+    newQuestions = this.sortQuestion(newQuestions);
+    this.setState({
+      questions: newQuestions
+    });
+  },
+  sortQuestion: function (questions) {
+    questions.sort(function (a, b) {
+      return b.voteCount - a.voteCount;
+    });
+    return questions;
+  },
   getDefaultProps: function() {},
   componentWillMount: function() {},
   componentDidMount: function() {},
-  shouldComponentUpdate: function() {},
   componentDidUpdate: function() {},
   componentWillUnmount: function() {},
 
@@ -66,10 +63,9 @@ var QuestionApp = React.createClass({
           </div>
           <div className="main container">
             {this.state.formDisplayed}
-            <QuestionForm formDisplayed={this.state.formDisplayed} />
+            <QuestionForm onNewQuestion={this.onNewQuestion} onToggleForm={this.onToggleForm} formDisplayed={this.state.formDisplayed} />
             <QuestionList questions={this.state.questions} />
           </div>
-          <LikeButton />
         </div>
       );
   }

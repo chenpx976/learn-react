@@ -6,17 +6,6 @@ var React = require('react/addons');
 require('styles/ShowAddButton.less');
 
 var ShowAddButton = React.createClass({
-  mixins: [],
-  getInitialState: function() {
-    return {};
-  },
-  getDefaultProps: function() {},
-  componentWillMount: function() {},
-  componentDidMount: function() {},
-  shouldComponentUpdate: function() {},
-  componentDidUpdate: function() {},
-  componentWillUnmount: function() {},
-
   render: function () {
     return (
         <div className="ShowAddButton">

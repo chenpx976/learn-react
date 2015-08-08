@@ -13,7 +13,6 @@ var QuestionList = React.createClass({
   getDefaultProps: function() {},
   componentWillMount: function() {},
   componentDidMount: function() {},
-  shouldComponentUpdate: function() {},
   componentDidUpdate: function() {},
   componentWillUnmount: function() {},
 
