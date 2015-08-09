@@ -17,7 +17,7 @@ var TabPanes = React.createClass({
 
   render: function () {
     var items = this.props.items.map(function(item) {
-      return <div role="tabpanel" className={this.props.activeItemId === item.id ? 'active' : '' + 'tab-pane'} >
+      return <div key={item.id} role="tabpanel" className={this.props.activeItemId === item.id ? 'active' : '' + 'tab-pane'} >
                   {item.content}
               </div>;
     }.bind(this));

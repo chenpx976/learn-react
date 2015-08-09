@@ -20,7 +20,7 @@ var TabNav = React.createClass({
 
   render: function () {
     var items = this.props.items.map(function(item) {
-      return <li onClick={this.onTablClick.bind(this, item)} role="presentation" className={this.props.activeItemId === item.id ? 'active' : ''} >
+      return <li key={item.id} onClick={this.onTablClick.bind(this, item)} role="presentation" className={this.props.activeItemId === item.id ? 'active' : ''} >
                   <a href="#home">{item.title}</a>
               </li>;
     }.bind(this));

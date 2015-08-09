@@ -3,6 +3,7 @@
 var React = require('react/addons');
 var QuestionApp = require('./QuestionApp.jsx');
 var TabApp = require('./TabApp.jsx');
+var Dropdown = require('./Dropdown.jsx');
 // CSS
 require('normalize.css');
 require('../styles/main.css');
@@ -12,6 +13,7 @@ var LearnReactApp = React.createClass({
       <div className="main">
         <QuestionApp />
         <TabApp />
+        <Dropdown />
       </div>
     );
   }
