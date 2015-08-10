@@ -34,7 +34,9 @@ var TabApp = React.createClass({
         };
   },
   componentWillMount: function() {},
-  componentDidMount: function() {},
+  componentDidMount: function() {
+
+  },
   componentWillUnmount: function() {},
 
   render: function () {
