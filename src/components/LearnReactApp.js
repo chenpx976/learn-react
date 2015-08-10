@@ -9,10 +9,28 @@ require('normalize.css');
 require('../styles/main.css');
 var LearnReactApp = React.createClass({
   render: function() {
+      var tabDate = {
+          activeTabId: 1,
+          tabs: [
+            {
+              title: 'Android',
+              content: '索尼大法好',
+              id: 1
+            },
+            {
+              title: 'Apple',
+              content: '水果十块钱一斤',
+              id: 2
+            }
+          ]
+        };
     return (
       <div className="main">
         <QuestionApp />
-        <TabApp />
+        <TabApp activeTabId={tabDate.activeTabId}
+        tabs={tabDate.tabs}
+         />
+         <TabApp />
         <Dropdown />
       </div>
     );
