@@ -3,6 +3,6 @@
     "app-name": "learnReact",
     "architecture": false,
     "styles-language": "less",
-    "component-suffix": "jsx"
+    "component-suffix": "js"
   }
 }
