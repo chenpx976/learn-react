@@ -20,5 +20,3 @@
 
  - [React.js: Composing components to create tabs](http://stackoverflow.com/questions/20872632/react-js-composing-components-to-create-tabs)
   - [demo](http://jsfiddle.net/NV/5YRG9/)
- - http://stackoverflow.com/questions/28667616/creating-a-basic-form-calculator-with-react-js
- - https://github.com/oscaruhp/reactjs/tree/gh-pages

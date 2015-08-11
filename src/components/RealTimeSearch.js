@@ -52,11 +52,16 @@ var RealTimeSearch = React.createClass({
     return (
         <div className="RealTimeSearch">
           <p>Content for RealTimeSearch</p>
-          <input type="text" value={this.state.searchString} onChange={this.handleChange} />
-          <ul>
+          <div className="input-group">
+            <input type="text" className="form-control" value={this.state.searchString} onChange={this.handleChange} />
+            <span className="input-group-btn">
+              <button type="button" className="btn btn-default">Go!</button>
+            </span>
+          </div>
+          <ul className="list-group">
             {
               libraries.map(function(elem, index) {
-                return <li key={index} >{elem.name} <a href="{elem.url}">{elem.url}</a> </li>;
+                return <li className="list-group-item" key={index} >{elem.name} <a href="{elem.url}">{elem.url}</a> </li>;
               })
             }
 

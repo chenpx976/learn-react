@@ -15,8 +15,6 @@
     "jquery": "^2.1.4",
     "lodash": "^3.10.1",
     "normalize.css": "~3.0.3",
-    "react": "0.13.x",
-    "react-bootstrap": "^0.24.3",
     "rc-calendar": "~3.11.0",
     "rc-checkbox": "~1.0.6",
     "rc-collapse": "~1.2.3",
@@ -34,7 +32,10 @@
     "rc-switch": "~1.2.0",
     "rc-table": "~3.1.0",
     "rc-tabs": "~5.2.0",
-    "rc-tooltip": "~2.4.0"
+    "rc-tooltip": "~2.4.0",
+    "react": "0.13.x",
+    "react-bootstrap": "^0.24.3",
+    "underscore": "~1.8.3"
   },
   "devDependencies": {
     "babel": "^5.0.0",

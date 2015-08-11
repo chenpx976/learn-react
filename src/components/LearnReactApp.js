@@ -3,9 +3,10 @@
 var React = require('react/addons');
 var QuestionApp = require('./QuestionApp.jsx');
 var TabApp = require('./TabApp.jsx');
-var Timer = require('./Timer.js');
+// var Timer = require('./Timer.js');
 var Menu = require('./Menu.js');
 var RealTimeSearch = require('./RealTimeSearch.js');
+var CalcApp = require('./CalcApp.js');
 // CSS
 require('normalize.css');
 require('../styles/main.css');
@@ -33,9 +34,9 @@ var LearnReactApp = React.createClass({
         tabs={tabDate.tabs}
          />
          <TabApp />
-        <Timer />
         <Menu />
         <RealTimeSearch />
+        <CalcApp />
       </div>
     );
   }
