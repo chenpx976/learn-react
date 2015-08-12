@@ -36,7 +36,7 @@ var Menu = React.createClass({
               var style = '';
               if (self.state.focused === index) {
                 style = 'focused';
-              };
+              }
               return <li key={index} className={style} onClick={self.onClick.bind(self, index)} >{elem}</li>;
             })
           }

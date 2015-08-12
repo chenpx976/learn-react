@@ -12,6 +12,7 @@
   "dependencies": {
     "antd": "~0.7.3",
     "bootstrap": "^3.3.5",
+    "eval": "^0.1.0",
     "jquery": "^2.1.4",
     "lodash": "^3.10.1",
     "normalize.css": "~3.0.3",

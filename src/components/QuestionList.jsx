@@ -20,7 +20,7 @@ var QuestionList = React.createClass({
     var questions = this.props.questions;
     if (!Array.isArray(questions)) {
       throw new Error('this.props.questions is must array');
-    };
+    }
     var questionComps = questions.map(function(elem) {
       return <QuestionItem key={elem.key} title={elem.title} des={elem.des} questionKey={elem.key} voteCount={elem.voteCount} onVote={ this.props.onVote } />;
     }.bind(this));

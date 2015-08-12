@@ -48,7 +48,7 @@ var RealTimeSearch = React.createClass({
       libraries = libraries.filter(function(elem) {
         return elem.name.toLowerCase().match(searchString);
       });
-    };
+    }
     return (
         <div className="RealTimeSearch">
           <p>Content for RealTimeSearch</p>

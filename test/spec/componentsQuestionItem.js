@@ -5,16 +5,16 @@
 // const TestUtils = React.addons.TestUtils;
 
 import createComponent from 'helpers/createComponent';
-import QuestionForm from 'components/QuestionForm.jsx';
+import QuestionItem from 'components/QuestionItem.jsx';
 
-describe('QuestionForm', () => {
-    let QuestionFormComponent;
+describe('QuestionItem', () => {
+    let QuestionItemComponent;
 
     beforeEach(() => {
-        QuestionFormComponent = createComponent(QuestionForm);
+        QuestionItemComponent = createComponent(QuestionItem);
     });
 
     it('should have its component name as default className', () => {
-        expect(QuestionFormComponent._store.props.className).toBe('QuestionForm');
+        expect(QuestionItemComponent._store.props.className).toBe('QuestionItem');
     });
 });

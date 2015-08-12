@@ -2,37 +2,45 @@
 
 var React = require('react/addons');
 var _ = require('underscore');
-
 require('styles/CalcApp.less');
-
+var evel = require('evel');
 var CalcApp = React.createClass({
   mixins: [],
   getInitialState: function() {
     return {
-      inputText: ''
+      inputText: '',
+      preBtn: '',
+      curBtn: ''
+
     };
   },
   getDefaultProps: function() {
     return {
-      numberBtn: [7, 8, 9, '+', 4, 5, 6, '-', 1, 2, 3, '*', 0, '.', '=', '\/', 'C'],
-      curBtn: ''
+      numberBtn: [7, 8, 9, '+', 4, 5, 6, '-', 1, 2, 3, '*', 0, '.', '=', '\/', 'C']
 
     };
   },
   onClick: function (elem) {
     var newValue = '';
     console.log(_.isNumber(elem));
-    if (elem === "=") {
-      newValue = eval(this.state.inputText);
-    } else if (elem === "C") {
-
-    } else {
+    if (elem === '=') {
+      if (this.state.preBtn !== '=') {
+        newValue = evel(this.state.inputText);
+      }
+    } else if (elem === 'C') {
+      newValue = '';
+    }/* else if (_.isNumber(this.state.preBtn) === false && _.isNumber(elem) === false){
+      this.setState({
+        preBtn: elem
+      });
+      return;
+    }*/else{
       newValue = this.state.inputText + elem;
-    };
+    }
 
     this.setState({
       inputText: newValue,
-      curBtn: elem
+      preBtn: elem
     });
   },
   clearInput: function () {
@@ -42,14 +50,7 @@ var CalcApp = React.createClass({
   },
   componentWillMount: function() {},
   componentDidMount: function() {},
-  shouldComponentUpdate: function(nextProps, nextState) {
-    if (_.isNumber(nextState.curBtn) == false && _.isNumber(this.state.curBtn) == false) {
-      return false;
-    };
-    return true;
-    // console.log(_.isNumber(nextState.curBtn), _.isNumber(this.state.curBtn));
-    // return _.isNumber(nextState.curBtn) == _.isNumber(this.state.curBtn);
-  },
+  // shouldComponentUpdate: function(nextProps, nextState) {},
   // componentDidUpdate: function() {},
   componentWillUnmount: function() {},
 
