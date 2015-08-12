@@ -9,9 +9,7 @@ var CalcApp = React.createClass({
   getInitialState: function() {
     return {
       inputText: '',
-      preBtn: '',
-      curBtn: ''
-
+      preBtn: ''
     };
   },
   getDefaultProps: function() {
