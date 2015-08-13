@@ -7,6 +7,7 @@ var TabApp = require('./TabApp.jsx');
 var Menu = require('./Menu.js');
 var RealTimeSearch = require('./RealTimeSearch.js');
 var CalcApp = require('./CalcApp.js');
+var GoGame = require('./GoGame.js');
 // CSS
 require('normalize.css');
 require('../styles/main.css');
@@ -37,6 +38,7 @@ var LearnReactApp = React.createClass({
         <Menu />
         <RealTimeSearch />
         <CalcApp />
+        <GoGame />
       </div>
     );
   }

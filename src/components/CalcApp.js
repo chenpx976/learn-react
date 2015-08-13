@@ -57,7 +57,7 @@ var CalcApp = React.createClass({
       return <button key={index} onClick={this.onClick.bind(this, elem)} type="button" className="btn btn-default numberBtn">{elem}</button>;
     }.bind(this));
     return (
-        <div className="CalcApp">
+        <div className="CalcApp container">
           <p>Content for CalcApp</p>
 
           <div className="col-md-offset-3 col-xs-6 col-sm-6 col-md-6 col-lg-6">
@@ -66,7 +66,7 @@ var CalcApp = React.createClass({
                   <h3 className="panel-title">React Calc</h3>
                 </div>
                 <div className="panel">
-                  <input type="text" onClick={this.clearInput} readOnly value={this.state.inputText} className="form-control inputText" />
+                  <input type="text" onClick={this.clearInput} readOnly value={this.state.inputText.toString()} className="form-control inputText" />
                 </div>
 
                 <div className="panel-body">
