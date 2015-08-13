@@ -28,10 +28,8 @@ var GoGame = React.createClass({
   },
   onClick: function (elem) {
     var newBoard = this.state.board;
-    console.dir(newBoard);
     var x = elem.x;
     var y = elem.y;
-    console.log(newBoard[x][y]);
     if (!elem.item) {
       newBoard[x][y] = this.state.flag ? 'Ⅹ' : 'O';
       this.setState({
@@ -67,8 +65,8 @@ var GoGame = React.createClass({
         if (elem) {
           showText = elem;
         }
-        return <div  onClick={self.onClick.bind(self, {x: x, y: y, item: elem})} className="GameBtn">{showText}</div>;
-      }.bind(self));
+        return <div onClick={self.onClick.bind(self, {x: x, y: y, item: elem})} className="GameBtn">{showText}</div>;
+      });
 
       });
     return (
