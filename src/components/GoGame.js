@@ -9,13 +9,13 @@ var GoGame = React.createClass({
   mixins: [],
   getInitialState: function() {
     return {
-      borad: this.props.borad,
+      borad: this.props.testborad,
       flag: true
     };
   },
   getDefaultProps: function() {
     return {
-      borad: [
+      testborad: [
         0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0,
@@ -28,11 +28,10 @@ var GoGame = React.createClass({
     };
   },
   onClick: function (elem) {
-    console.log(this.props.borad);
+    console.log(this.props.testborad);
     var index = elem.key;
     var newBorad = this.state.borad;
     if (!elem.item) {
-      // newBorad[index] += 1;
       newBorad[index] = this.state.flag ? 'Ⅹ' : 'O';
       this.setState({
         borad: newBorad,
@@ -41,9 +40,13 @@ var GoGame = React.createClass({
     }
   },
   clearBorad: function () {
-    console.log(this.props.borad);
+    var newBorad = this.state.borad;
+    newBorad.forEach(function (elem, index) {
+      newBorad[index] = 0;
+    });
+    console.dir(newBorad);
     this.setState({
-      borad: this.props.borad,
+      borad: newBorad,
       flag: this.state.flag
     });
   },
