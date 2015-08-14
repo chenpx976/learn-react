@@ -20,3 +20,4 @@
 
  - [React.js: Composing components to create tabs](http://stackoverflow.com/questions/20872632/react-js-composing-components-to-create-tabs)
   - [demo](http://jsfiddle.net/NV/5YRG9/)
+ - [Checkbox](https://github.com/yiminghe/learning-react/blob/master/tutorial/zh-cn/practice/checkbox.md)

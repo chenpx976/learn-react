@@ -6,21 +6,43 @@ var React = require('react/addons');
 require('styles/Checkbox.less');
 
 var Checkbox = React.createClass({
-  getInitialState: function() {
+  getDefaultProps: function() {
     return {
-      count: 0
+      defaultChecked: false,
+      onChange(){}
     };
   },
-  changeCheck: function () {
-    this.setState({
-      count: this.state.count + 1
-    });
+  getInitialState: function() {
+    var state = {};
+    var props = this.props;
+    if ('checked' in props) {
+      state.checked = props.checked;
+    } else{
+      state.checked = props.defaultChecked;
+    }
+    return state;
+  },
+  onClick: function () {
+    var nextChecked = !this.state.checked;
+    if (!('checked' in this.props)) {
+      this.setState({
+        checked: nextChecked
+      });
+    }
+    this.props.onChange(nextChecked);
   },
   render: function () {
+    var state = this.state;
+    var style = {
+      border: '1px solid red',
+      display: 'inline-block'
+    };
+    if (state.checked) {
+      style.backgroundColor = 'red';
+    }
     return (
         <div className="Checkbox">
-          {this.state.count}
-          <button onClick={this.changeCheck}>点我</button>
+            <div style={style} onClick={this.onClick} className="box"></div>
         </div>
       );
   }
