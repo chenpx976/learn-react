@@ -14,8 +14,9 @@
 
 ## Generators
 
- [react-webpack](https://github.com/newtriks/generator-react-webpack)
-
+ - [react-webpack](https://github.com/newtriks/generator-react-webpack)
+ - [react-component](https://github.com/react-component)
+ - [react-ui](https://github.com/Lobos/react-ui)
 ## Google
 
  - [React.js: Composing components to create tabs](http://stackoverflow.com/questions/20872632/react-js-composing-components-to-create-tabs)
