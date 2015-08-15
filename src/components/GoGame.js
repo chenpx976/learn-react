@@ -22,8 +22,8 @@ var GoGame = React.createClass({
   },
   getDefaultProps: function() {
     return {
-      row: 8,
-      col: 8
+      row: 12,
+      col: 12
     };
   },
   onClick: function (elem) {
@@ -31,7 +31,7 @@ var GoGame = React.createClass({
     var x = elem.x;
     var y = elem.y;
     if (!elem.item) {
-      newBoard[x][y] = this.state.flag ? 'Ⅹ' : 'O';
+      newBoard[x][y] = this.state.flag ? '1' : '2';
       this.setState({
         board: newBoard,
         flag: !this.state.flag
@@ -69,21 +69,17 @@ var GoGame = React.createClass({
       });
 
       });
+    var styleObj = {
+      width: 40 * this.props.col,
+      height: 40 * this.props.row,
+    };
     return (
         <div className="GoGame container">
-          <div className="col-md-offset-3 col-xs-6 col-sm-6 col-md-6 col-lg-6">
-            <div className="panel panel-primary">
-                <div className="panel-heading">
-                  <h3 className="panel-title">Content for GoGame</h3>
                   <button type="button" onClick={this.clearBoard} className="btn btn-default">重新开始</button>
-                </div>
 
-                <div className="panel-body">
+                <div className="game-board" style={styleObj}>
                 {GameBtn}
-
                 </div>
-            </div>
-          </div>
         </div>
       );
   }
