@@ -23,7 +23,7 @@ var GoGame = React.createClass({
   getDefaultProps: function() {
     return {
       row: 12,
-      col: 12
+      col: 12,
     };
   },
   onClick: function (elem) {
