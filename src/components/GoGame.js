@@ -13,8 +13,8 @@ var GoGame = React.createClass({
   },
   getDefaultProps: function() {
     return {
-      row: 12,
-      col: 12,
+      row: 20,
+      col: 20,
     };
   },
   onClick: function (elem) {
@@ -39,11 +39,14 @@ var GoGame = React.createClass({
     }
   },
   isWin: function (x, y, board) {
-    if (this.state.step > 8) {
-      board.forEach(function (col) {
-        console.log(col);
-      });
+    // console.log(board[x][y]);
+    for (var i = 0; i <= 5; i++) {
+        console.log(board[x + i][y]);
     }
+
+    // for(var item of board){
+    //   console.log(item);
+    // }
     // console.dir(board);
 
   },

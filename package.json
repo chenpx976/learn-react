@@ -15,6 +15,7 @@
     "evel": "^0.3.0",
     "jquery": "^2.1.4",
     "lodash": "^3.10.1",
+    "material-design-lite": "~1.0.2",
     "normalize.css": "~3.0.3",
     "rc-calendar": "~3.11.0",
     "rc-checkbox": "~1.0.6",
