@@ -1,49 +1,81 @@
 'use strict';
 
 var React = require('react/addons');
-var _ = require('underscore');
+// var _ = require('underscore');
 require('styles/CalcApp.less');
 var evel = require('evel');
 var CalcApp = React.createClass({
   mixins: [],
   getInitialState: function() {
     return {
-      inputText: '',
-      preBtn: ''
+      last: '',
+      cur: '',
     };
   },
   getDefaultProps: function() {
     return {
-      numberBtn: [7, 8, 9, '+', 4, 5, 6, '-', 1, 2, 3, '*', 0, '.', '=', '\/', 'C']
-
+      numberBtn: [7, 8, 9, '+', 4, 5, 6, '-', 1, 2, 3, '*', 0, '.', '=', '/', 'C']
     };
   },
   onClick: function (elem) {
-    var newValue = '';
-    console.log(_.isNumber(elem));
-    if (elem === '=') {
-      if (this.state.preBtn !== '=') {
-        newValue = evel(this.state.inputText);
-      }
-    } else if (elem === 'C') {
-      newValue = '';
-    }/* else if (_.isNumber(this.state.preBtn) === false && _.isNumber(elem) === false){
+    var cur;
+    var lastLetter;
+    switch (elem) {
+    case 'C':
       this.setState({
-        preBtn: elem
+        last: '',
+        cur: ''
       });
-      return;
-    }*/else{
-      newValue = this.state.inputText + elem;
+      break;
+    case '=':
+      try {
+        this.setState({
+          last: this.state.cur + '=',
+          cur: evel(this.state.cur) + ''
+        });
+      } catch (e) {
+        this.setState({
+          last: this.state.cur + '=',
+          cur: 'NaN'
+        });
+      }
+      break;
+    case '+':
+    case '-':
+    case '*':
+    case '/':
+      cur = this.state.cur;
+      lastLetter = cur.slice(-1);
+      if (lastLetter === '+' || lastLetter === '-' || lastLetter === '*' || lastLetter === '/'){
+        this.setState({
+          cur: cur.slice(0, -1) + elem
+        });
+      } else {
+        this.setState({
+          cur: this.state.cur + elem
+        });
+      }
+      break;
+    case '.':
+      cur = this.state.cur;
+      lastLetter = cur.slice(-1);
+      if (lastLetter !== '.') {
+        this.setState({
+          cur: this.state.cur + elem
+        });
+      }
+      break;
+    default:
+      this.setState({
+        cur: this.state.cur === '0' ? elem : this.state.cur + elem
+      });
+      break;
     }
-
-    this.setState({
-      inputText: newValue,
-      preBtn: elem
-    });
   },
   clearInput: function () {
     this.setState({
-      inputText: ''
+      last: '',
+      cur: '',
     });
   },
   componentWillMount: function() {},
@@ -66,7 +98,7 @@ var CalcApp = React.createClass({
                   <h3 className="panel-title">React Calc</h3>
                 </div>
                 <div className="panel">
-                  <input type="text" onClick={this.clearInput} readOnly value={this.state.inputText.toString()} className="form-control inputText" />
+                  <input type="text" onClick={this.clearInput} readOnly value={this.state.cur.toString()} className="form-control cur" />
                 </div>
 
                 <div className="panel-body">
